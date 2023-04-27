@@ -18,7 +18,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-
+import utils.Utils;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -33,7 +33,7 @@ public class TestBase {
     private static final String JSON_ARCHIVE = "target/json/jsonArchive.json";
     public static Properties properties;
     public static org.openqa.selenium.WebDriver driver;
-
+    public static Utils utils = new Utils();
     public static Date date = new Date();
     public static SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
     public static String dt = formatter.format(date);
