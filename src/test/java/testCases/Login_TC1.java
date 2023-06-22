@@ -2,13 +2,10 @@ package testCases;
 
 import com.aventstack.extentreports.Status;
 import common.TestBase;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.LogoutPage;
-import utils.Utils;
 
 public class Login_TC1 extends TestBase {
 
