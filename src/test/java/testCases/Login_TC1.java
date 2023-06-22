@@ -26,12 +26,12 @@ public class Login_TC1 extends TestBase {
         logger.info("Click on Login Button(Homepage)");
 
         utils.waitForElementVisible(LoginPage.userName);
-        utils.enterText(LoginPage.userName,"username");
+        utils.enterText(LoginPage.userName,"mihaip");
         test.log(Status.INFO, "Add username");
         logger.info("Add username");
 
         utils.waitForElementVisible(LoginPage.password);
-        utils.enterText(LoginPage.password,"password");
+        utils.enterText(LoginPage.password,"Pa$$w0rd1234");
         test.log(Status.INFO, "Add password");
         logger.info("Add password");
 
