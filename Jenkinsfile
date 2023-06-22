@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-            maven 'Maven3.9.2'
-        }
     stages {
 //         stage('Clone code') {
 //             git 'https://github.com/postumihai/automation.git'
