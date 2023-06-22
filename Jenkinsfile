@@ -1,25 +1,22 @@
-node {
-    def mvnHome
-    stage('Git') {
-        git 'https://github.com/postumihai/automation.git'
-        mvnHome = tool 'M3'
-    }
-    stage('Test') {
-        withEnv(["MVN_HOME=$mvnHome"]) {
-            if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" test -Dmaven.test.failure.ignore=true'
-            } else {
-                bat(/"%MVN_HOME%\bin\mvn" test -Dmaven.test.failure.ignore=true/)
+pipeline {
+    agent any
+    stages {
+        stage('Build test code') {
+            steps {
+                sh 'mvn clean install -DskipTests'
             }
         }
-    }
-    stage('Reports') {
-        allure([
-            includeProperties: false,
-            jdk: '',
-            properties: [],
-            reportBuildPolicy: 'ALWAYS',
-            results: [[path: 'target/surefire-reports']]
-        ])
+        stage('Execute test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Generate HTML report') {
+            steps {
+                script {
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                }
+            }
+        }
     }
 }
