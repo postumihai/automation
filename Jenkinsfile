@@ -5,7 +5,7 @@ pipeline {
              steps {
                              container ('maven'){
                                sh 'mvn version'
-                             }
+                             }}
 
         }
         stage('Build test code') {
