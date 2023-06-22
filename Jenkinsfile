@@ -1,14 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Env prepare') {
-
-             steps {
-                             container ('maven'){
-                               sh 'mvn version'
-                             }}
-
-        }
+//         stage('Env prepare') {
+//
+//              steps {
+//                              container ('maven'){
+//                                sh 'mvn version'
+//                              }}
+//
+//         }
         stage('Build test code') {
             steps {
                 sh 'mvn clean install -DskipTests'
