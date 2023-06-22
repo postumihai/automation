@@ -7,6 +7,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.JsonFormatter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +21,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import utils.Utils;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -77,8 +79,8 @@ public class TestBase {
         }
     }
 
-    public void extentReportSpark() {
-
+    public void extentReportSpark() throws IOException {
+        FileUtils.deleteDirectory(new File("reports"));
         spark = new ExtentSparkReporter(reportDestination);
         extent = new ExtentReports();
         extent.attachReporter(spark);
