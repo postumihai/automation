@@ -5,9 +5,13 @@ pipeline {
 //          jdk 'JAVA_HOME'
 //        }
     stages {
-//         stage('Clone code') {
-//             git 'https://github.com/postumihai/automation.git'
-//         }
+        stage('Env prepare') {
+             steps {
+               sh 'export M2_HOME=/opt/homebrew/Cellar/maven/3.9.2'
+               sh 'export PATH=$PATH:$M2_HOME/bin'
+               sh 'mvn --version'
+                   }
+        }
         stage('Build test code') {
             steps {
                 sh 'mvn clean install -DskipTests'
