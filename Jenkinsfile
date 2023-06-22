@@ -1,9 +1,8 @@
 pipeline {
     agent any
-//    tools {
-//          maven 'MAVEN_HOME'
-//          jdk 'JAVA_HOME'
-//        }
+   tools {
+         maven 'Maven3.9.2'
+       }
     stages {
         stage('Env prepare') {
              steps {
